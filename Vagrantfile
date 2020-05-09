@@ -12,6 +12,10 @@ Vagrant.configure(2) do |config|
   config.vm.provider "libvirt" do |lv|
   end
 
+  # ==> default: Running provisioner: ansible_local...
+  # `playbook` does not exist on the guest: /vagrant/nas.yml
+  config.vm.synced_folder "./", "/vagrant/"
+
   config.vm.provision "ansible_local" do |ansible|
     ansible.compatibility_mode = "2.0"
     ansible.galaxy_role_file = "requirements.yml"
