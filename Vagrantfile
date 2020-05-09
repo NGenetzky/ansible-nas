@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
     ansible.playbook = "nas.yml"
     ansible.become = true
     ansible.raw_arguments = [
-      "--extra-vars @tests/test.yml"
+      # "--extra-vars @tests/test.yml"
     ]
   end
 end
