@@ -1,9 +1,16 @@
 Vagrant.require_version ">= 2.2.2"
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/bionic64"
+
+  # Using 'generic' for 'libvirt' provider support
+  config.vm.box = "generic/ubuntu1804"
+  #config.vm.box = "ubuntu/bionic64"
+
   config.vm.network "private_network", ip: "172.30.1.5"
   config.ssh.insert_key = false
+
+  config.vm.provider "libvirt" do |lv|
+  end
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.compatibility_mode = "2.0"
